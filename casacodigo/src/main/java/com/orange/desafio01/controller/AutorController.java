@@ -1,7 +1,5 @@
 package com.orange.desafio01.controller;
 
-import java.util.Optional;
-
 import javax.validation.Valid;
 
 import com.orange.desafio01.casacodigo.dto.AutorRequest;

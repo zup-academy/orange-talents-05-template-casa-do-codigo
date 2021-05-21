@@ -39,8 +39,4 @@ public class Autor {
         this.registro = registro;
         this.descricao = descricao;
     }
-
-    public Long getId() {
-        return this.id;
-    }
 }

@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class Autor{
 
 
+
     @NotNull @NotBlank
     @Column(name = "NOME_AUTOR")
     private String nomeAutor;

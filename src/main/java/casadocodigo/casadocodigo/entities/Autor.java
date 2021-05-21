@@ -3,6 +3,7 @@ package casadocodigo.casadocodigo.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -18,6 +19,7 @@ public class Autor{
     @NotNull @NotBlank
     @Column(name = "NOME_AUTOR")
     private String nomeAutor;
+    @Id
     @NotNull @NotBlank
     @Column(name = "EMAIL_AUTOR")
     private String emailAutor;

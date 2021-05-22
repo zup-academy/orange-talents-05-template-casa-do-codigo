@@ -6,6 +6,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.orange.desafio01.casacodigo.compartilhado.UniqueValue;
 import com.orange.desafio01.casacodigo.entity.Autor;
 
 public class AutorRequest {
@@ -14,6 +15,7 @@ public class AutorRequest {
     private String nome;
     @NotBlank
     @Email
+    @UniqueValue(entidade = Autor.class, fieldName = "email")
     private String email;
     private LocalDateTime registro = LocalDateTime.now();
     @NotBlank

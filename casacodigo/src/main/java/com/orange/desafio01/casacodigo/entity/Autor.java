@@ -39,4 +39,12 @@ public class Autor {
         this.registro = registro;
         this.descricao = descricao;
     }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }

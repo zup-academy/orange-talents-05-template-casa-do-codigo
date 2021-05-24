@@ -2,11 +2,14 @@ package com.orange.desafio01.casacodigo.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 import com.orange.desafio01.casacodigo.entity.Livro;
+import java.util.stream.Collectors;
 
 public class LivroResponse {
-
+    
+    private Long id;
     private String titulo;
     private String resumo;
     private String sumario;
@@ -17,7 +20,7 @@ public class LivroResponse {
     private AutorResponse autorResponse;
 
 
-    public LivroResponse(Livro livro) {        
+    public LivroResponse(Livro livro) {        // constructor Detalhes de livro
         this.titulo = livro.getTitulo();
         this.resumo = livro.getResumo();
         this.sumario = livro.getSumario();
@@ -26,6 +29,20 @@ public class LivroResponse {
         this.isbn = livro.getIsbn();
         this.dataPublicacao = livro.getDataPublicacao();
         this.autorResponse = new AutorResponse(livro.getAutor());
+    }
+
+    public LivroResponse(Long id, String titulo) { //constructor lista de livros
+        this.id = id;
+        this.titulo = titulo;
+    }
+
+    public static List<LivroResponse> converter(List<Livro> listaLivro) {
+        return listaLivro.stream().map((livro) -> new LivroResponse(livro.getId(), livro.getTitulo())).collect(Collectors.toList());
+    }
+
+
+    public Long getId() {
+        return this.id;
     }
 
 
@@ -60,6 +77,5 @@ public class LivroResponse {
     public AutorResponse getAutorResponse() {
         return this.autorResponse;
     }
-
 
 }

@@ -1,5 +1,6 @@
 package com.orange.desafio01.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -36,6 +37,12 @@ public class LivroController {
 
         livroRepository.save(livro);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public List<LivroResponse> Listar() {
+        List<Livro> listaLivro = livroRepository.findAll();
+        return LivroResponse.converter(listaLivro);
     }
 
     @GetMapping("/{id}")

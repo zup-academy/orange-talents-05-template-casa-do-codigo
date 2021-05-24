@@ -1,6 +1,7 @@
 package casadocodigo.casadocodigo.dtos;
 
 import casadocodigo.casadocodigo.entities.Autor;
+import casadocodigo.casadocodigo.util.validators.UniqueValue;
 
 
 import javax.validation.constraints.Email;
@@ -13,6 +14,7 @@ public class AutorDTO {
     private String nomeAutor;
 
     @NotBlank
+    @UniqueValue(domainClass = Autor.class, fieldName = "emailAutor")
     private String emailAutor;
     @NotBlank
     @Size(max=400)

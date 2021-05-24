@@ -1,19 +1,23 @@
 package casadocodigo.casadocodigo.dtos;
 
 import casadocodigo.casadocodigo.entities.Categoria;
+import casadocodigo.casadocodigo.util.validators.UniqueValue;
+
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaDTO {
 
     @NotBlank
-    private String nomeCategoia;
+    @UniqueValue(domainClass = Categoria.class, fieldName = "nomeCategoria")
+    private String nomeCategoria;
 
-    public CategoriaDTO(String nomeCategoia) {
-        this.nomeCategoia = nomeCategoia;
+    public CategoriaDTO(String nomeCategoria) {
+        this.nomeCategoria = nomeCategoria;
     }
 
-    public Categoria toModel() {
 
-        return new Categoria(this.nomeCategoia);
+    public String getNome() {
+
+        return nomeCategoria;
     }
 }

@@ -2,6 +2,8 @@ package casadocodigo.casadocodigo.entities;
 
 
 
+import casadocodigo.casadocodigo.util.validators.UniqueValue;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

@@ -2,7 +2,6 @@ package com.orange.desafio01.casacodigo.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.validation.constraints.Future;

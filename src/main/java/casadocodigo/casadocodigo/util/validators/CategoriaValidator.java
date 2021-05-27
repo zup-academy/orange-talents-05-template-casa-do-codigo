@@ -1,6 +1,4 @@
 package casadocodigo.casadocodigo.util.validators;
-
-import casadocodigo.casadocodigo.dtos.CategoriaDTO;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;

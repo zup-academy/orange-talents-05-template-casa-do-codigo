@@ -1,7 +1,6 @@
 package casadocodigo.casadocodigo.dtos;
 
 import casadocodigo.casadocodigo.entities.Categoria;
-import casadocodigo.casadocodigo.util.validators.UniqueValue;
 
 import javax.validation.constraints.NotBlank;
 

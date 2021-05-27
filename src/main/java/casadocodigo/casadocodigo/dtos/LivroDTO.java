@@ -16,6 +16,8 @@ import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class LivroDTO {
 
@@ -78,6 +80,10 @@ public class LivroDTO {
     public LivroDTO() {
     }
 
+    public LivroDTO(Livro livro) {
+
+    }
+
     public void setData_publicacao(LocalDate data_publicacao) {
         this.data_publicacao = data_publicacao;
     }
@@ -90,4 +96,7 @@ public class LivroDTO {
     }
 
 
+    public static List<LivroDTO> converter(List<Livro> livros) {
+        return livros.stream().map(LivroDTO::new).collect(Collectors.toList());
+    }
 }

@@ -1,5 +1,6 @@
 package casadocodigo.casadocodigo.gateway.repositories;
 
+
 import casadocodigo.casadocodigo.entities.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 

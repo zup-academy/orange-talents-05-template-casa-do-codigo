@@ -66,6 +66,10 @@ public class Livro {
     public Livro(String titulo, String resumo, String sumario, int preco, int numero_paginas, String isbn, LocalDate data_publicacao, Categoria categoria, Autor autor) {
     }
 
+    public Livro() {
+
+    }
+
     @Override
     public String toString() {
         return "Livro{" +
@@ -80,5 +84,8 @@ public class Livro {
                 ", IdCategoria=" + IdCategoria +
                 ", IdAutor=" + IdAutor +
                 '}';
+    }
+
+    public void setQuantidade(String valueOf) {
     }
 }

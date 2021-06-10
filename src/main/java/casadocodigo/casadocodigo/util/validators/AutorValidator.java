@@ -3,7 +3,6 @@ package casadocodigo.casadocodigo.util.validators;
 import casadocodigo.casadocodigo.dtos.AutorDTO;
 import casadocodigo.casadocodigo.gateway.repositories.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -26,7 +25,9 @@ public class AutorValidator implements Validator {
         ValidationUtils.rejectIfEmpty(errors, "descAutor", "A descrição do autor não pode estar vazia");
 
         AutorDTO autorDTO = (AutorDTO) o;
-        if (autorRepository.existsById(autorDTO.getEmailAutor())){
+
+        var listaAutores = autorRepository.findByEmail(autorDTO.getEmailAutor());
+        if (!listaAutores.isEmpty()){
             errors.rejectValue("emailAutor", "O e-mail já existe!");
         }
     }

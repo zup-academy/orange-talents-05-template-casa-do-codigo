@@ -1,5 +1,4 @@
 package casadocodigo.casadocodigo.gateway.controller;
-
 import casadocodigo.casadocodigo.dtos.CategoriaDTO;
 import casadocodigo.casadocodigo.entities.Categoria;
 import casadocodigo.casadocodigo.gateway.repositories.CategoriaRepository;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
-
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaController {
@@ -21,7 +19,7 @@ public class CategoriaController {
     @PersistenceContext
     private EntityManager manager;
 
-    private CategoriaRepository categoriaRepository;
+    private CategoriaRepository categoriaRepository                                                                                                                                                                                                                                                                 ;
     public CategoriaController(CategoriaRepository categoriaRepository) {this.categoriaRepository = categoriaRepository;}
 
     @PostMapping
@@ -31,6 +29,6 @@ public class CategoriaController {
 
         Categoria categoria = new Categoria(request.getNome());
         manager.persist(categoria);
-       return categoria.toString();
+        return categoria.toString();
     }
 }

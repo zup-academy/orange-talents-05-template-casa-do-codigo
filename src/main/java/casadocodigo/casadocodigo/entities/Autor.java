@@ -3,20 +3,23 @@ package casadocodigo.casadocodigo.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_autor")
-public class Autor{
+public class Autor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_AUTOR")
+    private long idAutor;
 
-    @NotNull @NotBlank
+    @NotNull
+    @NotBlank
     @Column(name = "NOME_AUTOR")
     private String nomeAutor;
 
-    @Id
     @NotNull @NotBlank
     @Column(name = "EMAIL_AUTOR")
     private String emailAutor;
@@ -28,22 +31,27 @@ public class Autor{
     @Column(name = "LOCAL")
     private LocalDateTime local;
 
+    public Autor(String nomeAutor, String emailAutor, String descAutor) {
+    }
 
-    public Autor(String nomeAutor, String emailAutor, String descAutor, LocalDateTime local){
 
+    public Autor(long idAutor, String nomeAutor, String emailAutor, String descAutor, LocalDateTime local) {
+        this.idAutor = idAutor;
         this.nomeAutor = nomeAutor;
         this.emailAutor = emailAutor;
         this.descAutor = descAutor;
         this.local = local;
     }
 
+    public Autor() {
 
-    public Autor(String nomeAutor, String emailAutor, String descAutor) {
-        this.nomeAutor = nomeAutor;
-        this.emailAutor = emailAutor;
-        this.descAutor = descAutor;
     }
 
-    public Autor() {
+    public String getNomeAutor() {
+        return nomeAutor;
+    }
+
+    public String getDescricao() {
+        return descAutor;
     }
 }

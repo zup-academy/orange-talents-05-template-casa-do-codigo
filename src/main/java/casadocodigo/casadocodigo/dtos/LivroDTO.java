@@ -3,24 +3,19 @@ package casadocodigo.casadocodigo.dtos;
 import casadocodigo.casadocodigo.entities.Autor;
 import casadocodigo.casadocodigo.entities.Categoria;
 import casadocodigo.casadocodigo.entities.Livro;
+import casadocodigo.casadocodigo.util.validators.ExistsId;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Column;
 import javax.persistence.EntityManager;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class LivroDTO {
-
     @NotBlank //Titulo é obrigatório
     private String titulo;
 
@@ -49,23 +44,15 @@ public class LivroDTO {
     private LocalDate data_publicacao;
 
     @NotNull //A categoria não pode ser nula
-    @ExistsId(DomainClass = Categoria.class, fieldName="idCategoria")
+    @ExistsId(domainClass = Categoria.class, fieldName="idCategoria")
     private long idCategoria;
 
 
     @NotNull //O autor não pode ser nulo
-    @ExistsId(DomainClass = Categoria.class, fieldName="emailAutor")
+    @ExistsId(domainClass = Categoria.class, fieldName="emailAutor")
     private long idAutor;
 
-    public LivroDTO(String titulo,
-                    String resumo,
-                    String sumario,
-                    int preco,
-                    int numero_paginas,
-                    String isbn,
-                    LocalDate data_publicacao,
-                    long idCategoria,
-                    long idAutor) {
+    public LivroDTO(String titulo, String resumo, String sumario, int preco, int numero_paginas, String isbn, LocalDate data_publicacao, long idCategoria, long idAutor) {
         this.titulo = titulo;
         this.resumo = resumo;
         this.sumario = sumario;
@@ -97,6 +84,7 @@ public class LivroDTO {
 
 
     public static List<LivroDTO> converter(List<Livro> livros) {
-        return livros.stream().map(LivroDTO::new).collect(Collectors.toList());
+        List<LivroDTO> collect = livros.stream().map(LivroDTO::new).collect(Collectors.toList());
+        return collect;
     }
 }

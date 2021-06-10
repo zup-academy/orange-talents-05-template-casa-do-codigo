@@ -7,14 +7,12 @@ import javax.persistence.*;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name = "tb_livro")
 public class Livro {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,7 +33,7 @@ public class Livro {
     @NotNull @NotBlank //Preço é obrigatório e o mínimo é de 20
     @Column(name = "PRECO")
     @Length(min = 20)
-    private int preco;
+    private BigDecimal preco;
 
     @NotNull @NotBlank //Número de páginas é obrigatória e o mínimo é de 100
     @Column(name = "NUMERO_PAGINAS")
@@ -54,38 +52,79 @@ public class Livro {
     private LocalDate data_publicacao;
 
     @ManyToOne
+    @JoinColumn(name = "ID_CATEGORIA")
     @NotNull //A categoria não pode ser nula
-    private long IdCategoria;
+    private Categoria categoria;
 
     @ManyToOne
+    @JoinColumn(name = "ID_AUTOR")
     @NotNull //O autor não pode ser nulo
-    private long IdAutor;
+    private Autor autor;
 
 
-
-    public Livro(String titulo, String resumo, String sumario, int preco, int numero_paginas, String isbn, LocalDate data_publicacao, Categoria categoria, Autor autor) {
+    public Livro(long idLivro,
+                 String titulo,
+                 String resumo,
+                 String sumario,
+                 BigDecimal preco,
+                 int numeroPaginas,
+                 String isbn,
+                 LocalDate data_publicacao,
+                 Categoria categoria,
+                 Autor autor) {
+        this.idLivro = idLivro;
+        this.titulo = titulo;
+        this.resumo = resumo;
+        this.sumario = sumario;
+        this.preco = preco;
+        this.numeroPaginas = numeroPaginas;
+        this.isbn = isbn;
+        this.data_publicacao = data_publicacao;
+        this.categoria = categoria;
+        this.autor = autor;
     }
 
     public Livro() {
-
     }
 
-    @Override
-    public String toString() {
-        return "Livro{" +
-                "idLivro=" + idLivro +
-                ", titulo='" + titulo + '\'' +
-                ", resumo='" + resumo + '\'' +
-                ", sumario='" + sumario + '\'' +
-                ", preco=" + preco +
-                ", numeroPaginas=" + numeroPaginas +
-                ", isbn='" + isbn + '\'' +
-                ", data_publicacao=" + data_publicacao +
-                ", IdCategoria=" + IdCategoria +
-                ", IdAutor=" + IdAutor +
-                '}';
+    public Livro(String titulo,
+                 String resumo,
+                 String sumario,
+                 int preco,
+                 int numero_paginas,
+                 String isbn,
+                 LocalDate data_publicacao,
+                 Categoria categoria,
+                 Autor autor) {
     }
 
-    public void setQuantidade(String valueOf) {
+
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public String getSumario() {
+        return sumario;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public int getNumeroPaginas() {
+        return numeroPaginas;
     }
 }

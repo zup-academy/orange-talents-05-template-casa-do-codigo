@@ -1,6 +1,7 @@
 package casadocodigo.casadocodigo.gateway.repositories;
 
-import casadocodigo.casadocodigo.entities.Autor;
+
+import casadocodigo.casadocodigo.entities.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -9,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface AutorRepository  extends JpaRepository<Autor, Long> {
+public interface CategoriaRepository  extends JpaRepository<Categoria, Long> {
 
-    @Query("select a from Autor a where a.emailAutor = :email")
-    List<Autor> findByEmail (@Param("email")String email);
+    @Query("select a from Categoria a where a.nomeCategoria = :nome")
+    List<Categoria> findByNome (@Param("nome")String nome);
 }
